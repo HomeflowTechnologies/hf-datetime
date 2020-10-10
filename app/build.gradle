@@ -5,9 +5,11 @@ plugins {
 	id 'kotlin-android-extensions'
 	id 'maven-publish'
 	id 'com.jfrog.bintray'
+	id 'com.github.dcendents.android-maven'
 }
 
 version '1.0.0-alpha1'
+group='com.github.HomeflowTechnologies'
 
 task sourcesJar(type: Jar) {
 	archiveClassifier.set('sources')
@@ -64,48 +66,10 @@ if (project.rootProject.file('local.properties').exists()) {
 }
 
 afterEvaluate {
-	publishing {
-		publications
-			{
-				AndroidCountryPicker(MavenPublication)
-					{
-						from components.release
-						groupId 'com.homeflow'
-						artifactId this.artifactId
-						version libraryVersion
-						artifact sourcesJar {
-							classifier "sources"
-						}
-						pom.withXml {
-							def root = asNode()
-							root.appendNode("url", siteUrl)
-							root.children().last() + pomConfig
-						}
-					}
-
-			}
-		repositories {
-			// this works for upload but then need to publish manually
-			// it is because we need to send a flag to publish when we upload as param or header of upload request
-			// https://bintray.com/docs/api/#_upload_content
-			// since MavenPublish does not provide any such way, we will continue using BintrayUpload
-			// once we can get that then this will be the cleanest way to publish
-			maven {
-				name 'Bintray'
-				url "https://api.bintray.com/maven/homeflowtechnologies/maven/HomeflowDateTime/"
-
-				credentials {
-					username properties.getProperty("bintray.user")
-					password properties.getProperty("bintray.apikey")
-				}
-			}
-		}
-	}
-
 	bintray {
-		user = properties.getProperty("bintray.user")
-		key = properties.getProperty("bintray.apikey")
-		publications = ["AndroidCountryPicker"]
+		user = "ldavidsp"
+		key = "7ec62c05d1fda31fe5d6447a5a64382a3f9343a9"
+		publications = ["HomeflowDateTime"]
 		pkg {
 			repo = bintrayRepo
 			name = bintrayName
@@ -118,11 +82,6 @@ afterEvaluate {
 			version {
 				name = libraryVersion
 				desc = libraryDescription
-				gpg {
-					sign = true //Determines whether to GPG sign the files. The default is false
-					passphrase = properties.getProperty("bintray.gpg.password")
-					//Optional. The passphrase for GPG signing'
-				}
 			}
 		}
 	}
@@ -130,8 +89,6 @@ afterEvaluate {
 
 android {
 	compileSdkVersion 30
-	buildToolsVersion "30.0.2"
-
 	defaultConfig {
 		minSdkVersion 23
 		targetSdkVersion 30
