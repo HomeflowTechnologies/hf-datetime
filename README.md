@@ -1,4 +1,5 @@
-![](static/logo.png)
+<p align="center"><img src="static/logo.png" height="230"></p>
+
 
 Homeflow DataTime
 =====
