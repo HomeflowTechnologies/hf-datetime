@@ -50,10 +50,12 @@ Los casos de uso simples se verán así:
 
 Cobranzas
 ```java
-  HFCobranzas.getPaymenPlan(2, 7)
+HFCobranzas.getStartEndDate(2, 7)
+HFCobranzas.getPaymenPlan(2, 7)
 ```
 
 Fechas
 ```java
-  HFDate.addDays(8)
+HFDate.addDays(8)
+HFDate.addMonth(8)
 ```
