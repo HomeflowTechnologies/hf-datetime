@@ -3,8 +3,6 @@ plugins {
 	id 'kotlin-android'
 	id 'kotlin-kapt'
 	id 'kotlin-android-extensions'
-	id 'maven-publish'
-	id 'com.jfrog.bintray'
 	id 'com.github.dcendents.android-maven'
 }
 
@@ -17,74 +15,25 @@ task sourcesJar(type: Jar) {
 }
 ext {
 	libraryName = 'HomeflowDateTime'
-
 	bintrayRepo = 'maven'
 	bintrayName = libraryName
-
 	publishedGroupId = 'com.homeflow'
 	artifactId = libraryName
-
 	libraryDescription = 'Android DataTime (DT) is an Android library that provides an easy way to operate the date.'
-
 	siteUrl = 'https://github.com/HomeflowTechnologies/hf-datetime'
 	gitUrl = 'https://github.com/HomeflowTechnologies/hf-datetime.git'
-
 	libraryVersion = this.version
-
 	developerId = 'homeflowtechnologies'
 	developerName = 'Homeflow Technologies'
 	developerEmail = 'support@homeflowapp.com'
-
 	licenseName = 'MIT'
 	licenseUrl = 'https://github.com/HomeflowTechnologies/LICENSE'
 	allLicenses = ["MIT"]
 }
 
-def pomConfig = {
-	licenses {
-		license {
-			name licenseName
-			url licenseUrl
-			distribution "repo"
-		}
-	}
-	developers {
-		developer {
-			id developerId
-			name developerName
-			email developerEmail
-		}
-	}
-	scm {
-		url siteUrl
-	}
-}
-
 Properties properties = new Properties()
 if (project.rootProject.file('local.properties').exists()) {
 	properties.load(project.rootProject.file('local.properties').newDataInputStream())
-}
-
-afterEvaluate {
-	bintray {
-		user = "ldavidsp"
-		key = "7ec62c05d1fda31fe5d6447a5a64382a3f9343a9"
-		publications = ["HomeflowDateTime"]
-		pkg {
-			repo = bintrayRepo
-			name = bintrayName
-			desc = libraryDescription
-			websiteUrl = siteUrl
-			vcsUrl = gitUrl
-			licenses = allLicenses
-			publish = true
-			publicDownloadNumbers = true
-			version {
-				name = libraryVersion
-				desc = libraryDescription
-			}
-		}
-	}
 }
 
 android {
