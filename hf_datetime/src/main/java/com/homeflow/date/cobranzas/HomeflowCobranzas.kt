@@ -1,6 +1,5 @@
 package com.homeflow.date.cobranzas
 
-import android.annotation.SuppressLint
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,10 +38,9 @@ object HomeflowCobranzas {
    * @var int plazo
    * @var int periocicidad
    */
-  @SuppressLint("SimpleDateFormat")
   fun getStartEndDate(plazo: Int, periodicidad: Int): MutableList<String> {
     val startEndDate: MutableList<String> = ArrayList()
-    val df: DateFormat = SimpleDateFormat("yyyy-MM-dd")
+    val df: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val calendar = Calendar.getInstance()
     calendar.time
     for (i: Int in 1..plazo) {
@@ -73,10 +71,9 @@ object HomeflowCobranzas {
    * @var int plazo
    * @var int periocicidad
    */
-  @SuppressLint("SimpleDateFormat")
   fun getPaymentPlan(plazo: Int, periodicidad: Int): MutableList<String> {
     val paymentPlan: MutableList<String> = ArrayList()
-    val df: DateFormat = SimpleDateFormat("yyyy-MM-dd")
+    val df: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val calendar = Calendar.getInstance()
     calendar.time
     for (i: Int in 1..plazo) {

@@ -1,11 +1,11 @@
 package com.homeflow.date
 
-import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.*
 
 object HomeflowDate {
   private var date: Date? = null
+
   /**
    * Agregar dias
    */
@@ -135,9 +135,8 @@ object HomeflowDate {
   /**
    * Obtener el primer dia de la semana (Domingo).
    */
-  @SuppressLint("SimpleDateFormat")
   fun firstDayWeek(): Date {
-    val formatter = SimpleDateFormat("yyyy/MM/dd")
+    val formatter = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
     val calendar = Calendar.getInstance()
     calendar.set(Calendar.DAY_OF_WEEK, calendar.firstDayOfWeek)
     return formatter.parse(formatter.format(calendar.time))!!
@@ -146,9 +145,8 @@ object HomeflowDate {
   /**
    * Obtener el primer dia de la semana desde Lunes.
    */
-  @SuppressLint("SimpleDateFormat")
   fun firstDayWeekMonday(): Date {
-    val formatter = SimpleDateFormat("yyyy/MM/dd")
+    val formatter = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
     val calendar = Calendar.getInstance()
     while (calendar[Calendar.DAY_OF_WEEK] != Calendar.MONDAY) {
       calendar.add(Calendar.DATE, -1)
@@ -159,9 +157,8 @@ object HomeflowDate {
   /**
    * Obtener el ultimo dia de la semana.
    */
-  @SuppressLint("SimpleDateFormat")
   fun lastDayWeek(): Date {
-    val formatter = SimpleDateFormat("yyyy/MM/dd")
+    val formatter = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
     val calendar = Calendar.getInstance()
     while (calendar[Calendar.DAY_OF_WEEK] != Calendar.MONDAY) {
       calendar.add(Calendar.DATE, -6)
@@ -172,18 +169,16 @@ object HomeflowDate {
   /**
    * Verifiar si la fecha esta en el rango de la semana.
    */
-  @SuppressLint("SimpleDateFormat")
   fun isDateinWeek(date: String): Boolean {
-    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val compare = simpleDateFormat.parse(date)
     val firstDay = firstDayWeekMonday()
     val lastDay = lastDayWeek()
     return (firstDay.before(compare) || firstDay.compareTo(compare) == 0) && (lastDay.after(compare) || lastDay.compareTo(compare) == 0)
   }
 
-  @SuppressLint("SimpleDateFormat")
   fun format(format: String): String {
-    val df = SimpleDateFormat(format)
+    val df = SimpleDateFormat(format, Locale.getDefault())
     return df.format(date!!)
   }
 
