@@ -6,7 +6,7 @@
 Homeflow DataTime
 =====
 
-Homeflow DataTime (HDT) es una liberia de fechas que usa Date y Calendar con Kotlin para la automatización de operaciones con fechas, construido para la empresa Homeflow Technologies y asociados.
+Homeflow DataTime (HDT) es una liberia de fechas para Android que usa Date y Calendar con Kotlin para la automatización de operaciones con fechas, construido para la empresa Homeflow Technologies y asociados.
 
   - Obtener periodicidades.
   - Generar Planes de Pagos.
