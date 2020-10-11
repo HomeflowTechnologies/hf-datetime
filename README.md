@@ -53,12 +53,12 @@ Los casos de uso simples se verán así:
 
 Cobranzas
 ```java
-HomeflowCobranzas.getStartEndDate(2, 7)
-HomeflowCobranzas.getPaymenPlan(2, 7)
+HomeflowCobranzas.getStartEndDate(2, 7).format("yyyy/MM/dd")
+HomeflowCobranzas.getPaymenPlan(2, 7).format("yyyy/MM/dd")
 ```
 
 Fechas
 ```java
-HomeflowDate.addDays(8)
-HomeflowDate.addMonth(8)
+HomeflowDate.addDays(8).format("yyyy/MM/dd")
+HomeflowDate.addMonth(8).format("yyyy/MM/dd")
 ```
