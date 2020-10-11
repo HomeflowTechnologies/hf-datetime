@@ -1,44 +1,14 @@
 plugins {
-  id 'com.android.library'
+  id 'com.android.application'
   id 'kotlin-android'
   id 'kotlin-kapt'
   id 'kotlin-android-extensions'
-  id 'com.github.dcendents.android-maven'
-}
-
-version '1.0.0-alpha1'
-group = 'com.github.HomeflowTechnologies'
-
-task sourcesJar(type: Jar) {
-  archiveClassifier.set('sources')
-  from android.sourceSets.main.java.srcDirs
-}
-ext {
-  libraryName = 'HomeflowDateTime'
-  bintrayRepo = 'maven'
-  bintrayName = libraryName
-  publishedGroupId = 'com.homeflow'
-  artifactId = libraryName
-  libraryDescription = 'Android DataTime (DT) is an Android library that provides an easy way to operate the date.'
-  siteUrl = 'https://github.com/HomeflowTechnologies/hf-datetime'
-  gitUrl = 'https://github.com/HomeflowTechnologies/hf-datetime.git'
-  libraryVersion = this.version
-  developerId = 'homeflowtechnologies'
-  developerName = 'Homeflow Technologies'
-  developerEmail = 'support@homeflowapp.com'
-  licenseName = 'MIT'
-  licenseUrl = 'https://github.com/HomeflowTechnologies/LICENSE'
-  allLicenses = ["MIT"]
-}
-
-Properties properties = new Properties()
-if (project.rootProject.file('local.properties').exists()) {
-  properties.load(project.rootProject.file('local.properties').newDataInputStream())
 }
 
 android {
   compileSdkVersion 30
   defaultConfig {
+    applicationId "com.homeflow.datetime"
     minSdkVersion 23
     targetSdkVersion 30
     versionCode 1
@@ -72,7 +42,7 @@ dependencies {
   implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
   implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
   implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
-  testImplementation 'junit:junit:4.13'
+  testImplementation 'junit:junit:4.13.1'
   androidTestImplementation 'androidx.test.ext:junit:1.1.2'
   androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
