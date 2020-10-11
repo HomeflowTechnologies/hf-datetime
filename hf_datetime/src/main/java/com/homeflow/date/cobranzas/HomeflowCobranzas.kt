@@ -10,10 +10,10 @@ object HomeflowCobranzas {
    * Fecha de la última cotización.
    * @var int plazo
    */
-  fun lastQuoteDate(plazo: Int): String {
+  fun lastQuoteDate(plazo: Int, format: String): String {
     val calendar = Calendar.getInstance()
     calendar.time
-    val df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val df = SimpleDateFormat(format, Locale.getDefault())
     var sunday = 0
 
     for (i: Int in 1..plazo) {
@@ -38,9 +38,9 @@ object HomeflowCobranzas {
    * @var int plazo
    * @var int periocicidad
    */
-  fun getStartEndDate(plazo: Int, periodicidad: Int): MutableList<String> {
+  fun getStartEndDate(plazo: Int, periodicidad: Int, format: String): MutableList<String> {
     val startEndDate: MutableList<String> = ArrayList()
-    val df: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val df: DateFormat = SimpleDateFormat(format, Locale.getDefault())
     val calendar = Calendar.getInstance()
     calendar.time
     for (i: Int in 1..plazo) {
@@ -71,9 +71,9 @@ object HomeflowCobranzas {
    * @var int plazo
    * @var int periocicidad
    */
-  fun getPaymentPlan(plazo: Int, periodicidad: Int): MutableList<String> {
+  fun getPaymentPlan(plazo: Int, periodicidad: Int, format: String): MutableList<String> {
     val paymentPlan: MutableList<String> = ArrayList()
-    val df: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val df: DateFormat = SimpleDateFormat(format, Locale.getDefault())
     val calendar = Calendar.getInstance()
     calendar.time
     for (i: Int in 1..plazo) {
