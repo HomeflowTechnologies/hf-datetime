@@ -6,7 +6,7 @@ plugins {
 	id 'com.github.dcendents.android-maven'
 }
 
-version '1.0.0-alpha2'
+version '1.0.0-alpha02'
 group = 'com.github.HomeflowTechnologies'
 
 task sourcesJar(type: Jar) {
