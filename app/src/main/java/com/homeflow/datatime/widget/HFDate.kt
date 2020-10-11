@@ -170,7 +170,7 @@ object HFDate {
     val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
     val dateTime = simpleDateFormat.parse(fecha)
     val primerdia = firstDayWeek()
-    val ultimodia = lastDayWeek();
+    val ultimodia = lastDayWeek()
     return (primerdia.before(dateTime) || primerdia.compareTo(dateTime) == 0) && (ultimodia.after(dateTime) || ultimodia.compareTo(dateTime) == 0)
   }
 
