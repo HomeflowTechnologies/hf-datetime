@@ -53,12 +53,12 @@ Los casos de uso simples se verán así:
 
 Cobranzas
 ```java
-HFCobranzas.getStartEndDate(2, 7)
-HFCobranzas.getPaymenPlan(2, 7)
+HomeflowCobranzas.getStartEndDate(2, 7)
+HomeflowCobranzas.getPaymenPlan(2, 7)
 ```
 
 Fechas
 ```java
-HFDate.addDays(8)
-HFDate.addMonth(8)
+HomeflowDate.addDays(8)
+HomeflowDate.addMonth(8)
 ```
