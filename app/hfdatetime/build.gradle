@@ -6,7 +6,7 @@ plugins {
 	id 'com.github.dcendents.android-maven'
 }
 
-version '1.0.0-alpha1'
+version '1.0.0-alpha2'
 group = 'com.github.HomeflowTechnologies'
 
 task sourcesJar(type: Jar) {
@@ -43,7 +43,7 @@ android {
 		minSdkVersion 23
 		targetSdkVersion 30
 		versionCode 1
-		versionName "1.0.0-alpha1"
+		versionName this.version
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 	}
 
