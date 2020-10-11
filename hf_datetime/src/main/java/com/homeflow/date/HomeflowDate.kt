@@ -1,10 +1,11 @@
 package com.homeflow.date
 
-import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.*
 
 object HomeflowDate {
+  private var date: Date? = null
+  private lateinit var df: SimpleDateFormat
 
   /**
    * Agregar dias
@@ -13,170 +14,194 @@ object HomeflowDate {
     val calendar = Calendar.getInstance()
     calendar.time
     calendar.add(Calendar.DATE, day)
+    date = calendar.time
     return this
-    //return calendar.time
   }
 
   /**
    * Agregar meses
    * @var int months
    */
-  fun addMonth(month: Int): Date {
+  fun addMonth(month: Int): HomeflowDate {
     val calendar = Calendar.getInstance()
     calendar.time
     calendar.add(Calendar.MONTH, month)
-    return calendar.time
+    date = calendar.time
+    return this
   }
 
   /**
    * Agregar Años
    * @var years
    */
-  fun addYear(year: Int): Date {
+  fun addYear(year: Int): HomeflowDate {
     val calendar = Calendar.getInstance()
     calendar.time
     calendar.add(Calendar.YEAR, year)
-    return calendar.time
+    date = calendar.time
+    return this
   }
 
   /**
    * Verificar si hoy es Lunes.
+   * @var String date (yyyy-MM-dd)
    */
-  fun isMonday(): Boolean {
+  fun isMonday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
-    calendar.time
-    val weekday = calendar.get(Calendar.DAY_OF_WEEK)
-    if (weekday == Calendar.MONDAY) {
-      return true
+    df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    return if (date!!.isNotEmpty()) {
+      calendar.time = df.parse(date)!!
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY
+    } else {
+      calendar.time
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY
     }
-    return false
   }
 
   /**
    * Verificar si hoy es Martes.
+   * @var String date (yyyy-MM-dd)
    */
-  fun isTuesday(): Boolean {
+  fun isTuesday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
-    calendar.time
-    val weekday = calendar.get(Calendar.DAY_OF_WEEK)
-    if (weekday == Calendar.TUESDAY) {
-      return true
+    df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    return if (date!!.isNotEmpty()) {
+      calendar.time = df.parse(date)!!
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY
+    } else {
+      calendar.time
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY
     }
-    return false
   }
 
   /**
    * Verificar si hoy es Miercoles.
+   * @var String date (yyyy-MM-dd)
    */
-  fun isWednesday(): Boolean {
+  fun isWednesday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
-    calendar.time
-    val weekday = calendar.get(Calendar.DAY_OF_WEEK)
-    if (weekday == Calendar.WEDNESDAY) {
-      return true
+    df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    return if (date!!.isNotEmpty()) {
+      calendar.time = df.parse(date)!!
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY
+    } else {
+      calendar.time
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY
     }
-    return false
   }
 
   /**
    * Verificar si hoy es Jueves.
+   * @var String date (yyyy-MM-dd)
    */
-  fun isThursday(): Boolean {
+  fun isThursday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
-    calendar.time
-    val weekday = calendar.get(Calendar.DAY_OF_WEEK)
-    if (weekday == Calendar.THURSDAY) {
-      return true
+    df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    return if (date!!.isNotEmpty()) {
+      calendar.time = df.parse(date)!!
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY
+    } else {
+      calendar.time
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY
     }
-    return false
   }
 
   /**
    * Verificar si hoy es Viernes.
+   * @var String date (yyyy-MM-dd)
    */
-  fun isFriday(): Boolean {
+  fun isFriday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
-    calendar.time
-    val weekday = calendar.get(Calendar.DAY_OF_WEEK)
-    if (weekday == Calendar.FRIDAY) {
-      return true
+    df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    return if (date!!.isNotEmpty()) {
+      calendar.time = df.parse(date)!!
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+    } else {
+      calendar.time
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
     }
-    return false
   }
 
   /**
    * Verificar si hoy es Sabado.
+   * @var String date (yyyy-MM-dd)
    */
-  fun isSaturday(): Boolean {
+  fun isSaturday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
-    calendar.time
-    val weekday = calendar.get(Calendar.DAY_OF_WEEK)
-    if (weekday == Calendar.SATURDAY) {
-      return true
+    df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    return if (date!!.isNotEmpty()) {
+      calendar.time = df.parse(date)!!
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY
+    } else {
+      calendar.time
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY
     }
-    return false
   }
 
   /**
    * Verificar si hoy es Domingo.
+   * @var String date (yyyy-MM-dd)
    */
-  fun isSunday(): Boolean {
+  fun isSunday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
-    calendar.time
-    val weekday = calendar.get(Calendar.DAY_OF_WEEK)
-    if (weekday == Calendar.SUNDAY) {
-      return true
+    df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    return if (date!!.isNotEmpty()) {
+      calendar.time = df.parse(date)!!
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY
+    } else {
+      calendar.time
+      calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY
     }
-    return false
   }
 
   /**
    * Obtener el primer dia de la semana (Domingo).
    */
-  @SuppressLint("SimpleDateFormat")
-  fun firstDayWeek(): Date {
-    val formatter = SimpleDateFormat("yyyy/MM/dd")
+  fun firstDayWeek(format: String): Date {
+    df = SimpleDateFormat(format, Locale.getDefault())
     val calendar = Calendar.getInstance()
     calendar.set(Calendar.DAY_OF_WEEK, calendar.firstDayOfWeek)
-    return formatter.parse(formatter.format(calendar.time))!!
+    return df.parse(df.format(calendar.time))!!
   }
 
   /**
    * Obtener el primer dia de la semana desde Lunes.
    */
-  @SuppressLint("SimpleDateFormat")
-  fun firstDayWeekMonday(): Date {
-    val formatter = SimpleDateFormat("yyyy/MM/dd")
+  fun firstDayWeekMonday(format: String): Date {
+    df = SimpleDateFormat(format, Locale.getDefault())
     val calendar = Calendar.getInstance()
     while (calendar[Calendar.DAY_OF_WEEK] != Calendar.MONDAY) {
       calendar.add(Calendar.DATE, -1)
     }
-    return formatter.parse(formatter.format(calendar.time))!!
+    return df.parse(df.format(calendar.time))!!
   }
 
   /**
    * Obtener el ultimo dia de la semana.
    */
-  @SuppressLint("SimpleDateFormat")
-  fun lastDayWeek(): Date {
-    val formatter = SimpleDateFormat("yyyy/MM/dd")
+  fun lastDayWeek(format: String): Date {
+    df = SimpleDateFormat(format, Locale.getDefault())
     val calendar = Calendar.getInstance()
     while (calendar[Calendar.DAY_OF_WEEK] != Calendar.MONDAY) {
       calendar.add(Calendar.DATE, -6)
     }
-    return formatter.parse(formatter.format(calendar.time))!!
+    return df.parse(df.format(calendar.time))!!
   }
 
   /**
    * Verifiar si la fecha esta en el rango de la semana.
    */
-  @SuppressLint("SimpleDateFormat")
-  fun isDateinWeek(date: String): Boolean {
-    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
-    val compare = simpleDateFormat.parse(date)
-    val firstDay = firstDayWeekMonday()
-    val lastDay = lastDayWeek()
+  fun isDateinWeek(date: String, format: String): Boolean {
+    df = SimpleDateFormat(format, Locale.getDefault())
+    val compare = df.parse(date)
+    val firstDay = firstDayWeekMonday(format)
+    val lastDay = lastDayWeek(format)
     return (firstDay.before(compare) || firstDay.compareTo(compare) == 0) && (lastDay.after(compare) || lastDay.compareTo(compare) == 0)
+  }
+
+  fun format(format: String): String {
+    df = SimpleDateFormat(format, Locale.getDefault())
+    return df.format(date!!)
   }
 
 }
