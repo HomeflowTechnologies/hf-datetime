@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.homeflow.datatime.databinding.ActivityMainBinding
 import com.homeflow.date.HomeflowDate
+import com.homeflow.date.cobranzas.HomeflowCobranzas
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -16,9 +17,20 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    val addDay = HomeflowDate.addDay(2).format("yyyy/MM/dd")
+    /**
+     * Homeflow Cobranzas
+     */
+    val payment = HomeflowCobranzas.getPaymentPlan(5, 7, "yyyy-MM-dd")
+    Log.d("DATE: ", payment.toString())
+
+    /**
+     * Homeflow Date
+     */
+    val addDay = HomeflowDate.addDay(2).format("yyyy-MM-dd")
     val sunday = HomeflowDate.isSunday()
-    Log.e("DATE: ", sunday.toString())
+
+    Log.d("DATE: ", sunday.toString())
+    Log.d("DATE: ", addDay)
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
