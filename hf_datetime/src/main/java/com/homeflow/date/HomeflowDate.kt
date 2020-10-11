@@ -136,7 +136,7 @@ object HomeflowDate {
    * Obtener el primer dia de la semana (Domingo).
    */
   fun firstDayWeek(): Date {
-    val formatter = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+    val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val calendar = Calendar.getInstance()
     calendar.set(Calendar.DAY_OF_WEEK, calendar.firstDayOfWeek)
     return formatter.parse(formatter.format(calendar.time))!!
@@ -146,7 +146,7 @@ object HomeflowDate {
    * Obtener el primer dia de la semana desde Lunes.
    */
   fun firstDayWeekMonday(): Date {
-    val formatter = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+    val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val calendar = Calendar.getInstance()
     while (calendar[Calendar.DAY_OF_WEEK] != Calendar.MONDAY) {
       calendar.add(Calendar.DATE, -1)
@@ -158,7 +158,7 @@ object HomeflowDate {
    * Obtener el ultimo dia de la semana.
    */
   fun lastDayWeek(): Date {
-    val formatter = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+    val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val calendar = Calendar.getInstance()
     while (calendar[Calendar.DAY_OF_WEEK] != Calendar.MONDAY) {
       calendar.add(Calendar.DATE, -6)
