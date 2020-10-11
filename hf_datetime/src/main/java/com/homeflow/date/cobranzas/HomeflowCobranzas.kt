@@ -1,11 +1,12 @@
 package com.homeflow.date.cobranzas
 
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 object HomeflowCobranzas {
+  private lateinit var df: SimpleDateFormat
+
   /**
    * Fecha de la última cotización.
    * @var int plazo
@@ -13,7 +14,7 @@ object HomeflowCobranzas {
   fun lastQuoteDate(plazo: Int, format: String): String {
     val calendar = Calendar.getInstance()
     calendar.time
-    val df = SimpleDateFormat(format, Locale.getDefault())
+    df = SimpleDateFormat(format, Locale.getDefault())
     var sunday = 0
 
     for (i: Int in 1..plazo) {
@@ -40,7 +41,7 @@ object HomeflowCobranzas {
    */
   fun getStartEndDate(plazo: Int, periodicidad: Int, format: String): MutableList<String> {
     val startEndDate: MutableList<String> = ArrayList()
-    val df: DateFormat = SimpleDateFormat(format, Locale.getDefault())
+    df = SimpleDateFormat(format, Locale.getDefault())
     val calendar = Calendar.getInstance()
     calendar.time
     for (i: Int in 1..plazo) {
@@ -73,7 +74,7 @@ object HomeflowCobranzas {
    */
   fun getPaymentPlan(plazo: Int, periodicidad: Int, format: String): MutableList<String> {
     val paymentPlan: MutableList<String> = ArrayList()
-    val df: DateFormat = SimpleDateFormat(format, Locale.getDefault())
+    df = SimpleDateFormat(format, Locale.getDefault())
     val calendar = Calendar.getInstance()
     calendar.time
     for (i: Int in 1..plazo) {
