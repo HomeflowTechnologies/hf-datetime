@@ -1,5 +1,7 @@
-package com.homeflow.datatime.widget
+package com.homeflow.hfdatetime
 
+import android.annotation.SuppressLint
+import java.text.SimpleDateFormat
 import java.util.*
 
 object HFDate {
@@ -125,6 +127,51 @@ object HFDate {
       return true
     }
     return false
+  }
+
+  @SuppressLint("SimpleDateFormat")
+  fun firstDayWeek(): Date {
+    val calendar = Calendar.getInstance()
+    calendar.set(Calendar.HOUR_OF_DAY, 0)
+    calendar.clear(Calendar.MINUTE)
+    calendar.clear(Calendar.SECOND);
+    calendar.clear(Calendar.MILLISECOND);
+
+    calendar.set(Calendar.DAY_OF_WEEK, calendar.firstDayOfWeek)
+    val formatter = SimpleDateFormat("yyyy/MM/dd")
+
+    val date = formatter.format(calendar.time)
+    return formatter.parse(date)!!
+
+  }
+
+  fun firstDayWeek_Calendar(): Calendar {
+    val calendar: Calendar = Calendar.getInstance()
+    calendar.set(Calendar.HOUR_OF_DAY, 0)
+    calendar.clear(Calendar.MINUTE)
+    calendar.clear(Calendar.SECOND);
+    calendar.clear(Calendar.MILLISECOND);
+
+    calendar.set(Calendar.DAY_OF_WEEK, calendar.firstDayOfWeek)
+    return calendar
+  }
+
+  @SuppressLint("SimpleDateFormat")
+  fun lastDayWeek(): Date {
+    val calendar = firstDayWeek_Calendar()
+    calendar.add(Calendar.DAY_OF_YEAR, 6)
+    val formatter = SimpleDateFormat("yyyy/MM/dd")
+    val date = formatter.format(calendar.time)
+    return formatter.parse(date)!!
+  }
+
+  @SuppressLint("SimpleDateFormat")
+  fun isDateinWeek(fecha: String): Boolean {
+    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+    val dateTime = simpleDateFormat.parse(fecha)
+    val primerdia = firstDayWeek()
+    val ultimodia = lastDayWeek()
+    return (primerdia.before(dateTime) || primerdia.compareTo(dateTime) == 0) && (ultimodia.after(dateTime) || ultimodia.compareTo(dateTime) == 0)
   }
 
 }

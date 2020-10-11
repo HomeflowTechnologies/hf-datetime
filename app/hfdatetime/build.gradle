@@ -40,7 +40,6 @@ if (project.rootProject.file('local.properties').exists()) {
 android {
 	compileSdkVersion 30
 	defaultConfig {
-		applicationId "com.homeflow.datetime"
 		minSdkVersion 23
 		targetSdkVersion 30
 		versionCode 1
