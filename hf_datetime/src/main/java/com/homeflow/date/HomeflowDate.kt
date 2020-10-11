@@ -1,29 +1,30 @@
-package com.homeflow.hfdatetime
+package com.homeflow.date
 
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
 import java.util.*
 
-object HFDate {
+object HomeflowDate {
 
   /**
    * Agregar dias
    */
-  fun addDays(days: Int): Date {
+  fun addDay(day: Int): HomeflowDate {
     val calendar = Calendar.getInstance()
     calendar.time
-    calendar.add(Calendar.DATE, days)
-    return calendar.time
+    calendar.add(Calendar.DATE, day)
+    return this
+    //return calendar.time
   }
 
   /**
    * Agregar meses
    * @var int months
    */
-  fun addMonth(months: Int): Date {
+  fun addMonth(month: Int): Date {
     val calendar = Calendar.getInstance()
     calendar.time
-    calendar.add(Calendar.MONTH, months)
+    calendar.add(Calendar.MONTH, month)
     return calendar.time
   }
 
@@ -31,10 +32,10 @@ object HFDate {
    * Agregar Años
    * @var years
    */
-  fun addYears(years: Int): Date {
+  fun addYear(year: Int): Date {
     val calendar = Calendar.getInstance()
     calendar.time
-    calendar.add(Calendar.YEAR, years)
+    calendar.add(Calendar.YEAR, year)
     return calendar.time
   }
 
@@ -129,49 +130,53 @@ object HFDate {
     return false
   }
 
+  /**
+   * Obtener el primer dia de la semana (Domingo).
+   */
   @SuppressLint("SimpleDateFormat")
   fun firstDayWeek(): Date {
-    val calendar = Calendar.getInstance()
-    calendar.set(Calendar.HOUR_OF_DAY, 0)
-    calendar.clear(Calendar.MINUTE)
-    calendar.clear(Calendar.SECOND);
-    calendar.clear(Calendar.MILLISECOND);
-
-    calendar.set(Calendar.DAY_OF_WEEK, calendar.firstDayOfWeek)
     val formatter = SimpleDateFormat("yyyy/MM/dd")
-
-    val date = formatter.format(calendar.time)
-    return formatter.parse(date)!!
-
-  }
-
-  fun firstDayWeek_Calendar(): Calendar {
-    val calendar: Calendar = Calendar.getInstance()
-    calendar.set(Calendar.HOUR_OF_DAY, 0)
-    calendar.clear(Calendar.MINUTE)
-    calendar.clear(Calendar.SECOND);
-    calendar.clear(Calendar.MILLISECOND);
-
+    val calendar = Calendar.getInstance()
     calendar.set(Calendar.DAY_OF_WEEK, calendar.firstDayOfWeek)
-    return calendar
+    return formatter.parse(formatter.format(calendar.time))!!
   }
 
+  /**
+   * Obtener el primer dia de la semana desde Lunes.
+   */
+  @SuppressLint("SimpleDateFormat")
+  fun firstDayWeekMonday(): Date {
+    val formatter = SimpleDateFormat("yyyy/MM/dd")
+    val calendar = Calendar.getInstance()
+    while (calendar[Calendar.DAY_OF_WEEK] != Calendar.MONDAY) {
+      calendar.add(Calendar.DATE, -1)
+    }
+    return formatter.parse(formatter.format(calendar.time))!!
+  }
+
+  /**
+   * Obtener el ultimo dia de la semana.
+   */
   @SuppressLint("SimpleDateFormat")
   fun lastDayWeek(): Date {
-    val calendar = firstDayWeek_Calendar()
-    calendar.add(Calendar.DAY_OF_YEAR, 6)
     val formatter = SimpleDateFormat("yyyy/MM/dd")
-    val date = formatter.format(calendar.time)
-    return formatter.parse(date)!!
+    val calendar = Calendar.getInstance()
+    while (calendar[Calendar.DAY_OF_WEEK] != Calendar.MONDAY) {
+      calendar.add(Calendar.DATE, -6)
+    }
+    return formatter.parse(formatter.format(calendar.time))!!
   }
 
+  /**
+   * Verifiar si la fecha esta en el rango de la semana.
+   */
   @SuppressLint("SimpleDateFormat")
-  fun isDateinWeek(fecha: String): Boolean {
+  fun isDateinWeek(date: String): Boolean {
     val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
-    val dateTime = simpleDateFormat.parse(fecha)
-    val primerdia = firstDayWeek()
-    val ultimodia = lastDayWeek()
-    return (primerdia.before(dateTime) || primerdia.compareTo(dateTime) == 0) && (ultimodia.after(dateTime) || ultimodia.compareTo(dateTime) == 0)
+    val compare = simpleDateFormat.parse(date)
+    val firstDay = firstDayWeekMonday()
+    val lastDay = lastDayWeek()
+    return (firstDay.before(compare) || firstDay.compareTo(compare) == 0) && (lastDay.after(compare) || lastDay.compareTo(compare) == 0)
   }
 
 }

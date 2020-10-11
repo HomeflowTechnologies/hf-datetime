@@ -1,4 +1,4 @@
-package com.homeflow.hfdatetime
+package com.homeflow.date.cobranzas
 
 import android.annotation.SuppressLint
 import java.text.DateFormat
@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-object HFCobranzas {
+object HomeflowCobranzas {
   /**
    * Fecha de la última cotización.
    * @var int plazo
