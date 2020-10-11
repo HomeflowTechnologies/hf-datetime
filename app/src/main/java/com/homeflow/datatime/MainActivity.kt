@@ -16,12 +16,9 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    //HomeflowDate.addDay(7).format("yyyy/MM/dd")
-
-    val calendar =  Calendar.getInstance()
-    calendar.set(Calendar.DAY_OF_WEEK, calendar.firstDayOfWeek)
-    val formatter = SimpleDateFormat("yyyy/MM/dd")
-    Log.e("DATE: ", formatter.format(calendar.time).toString())
+    val addDay = HomeflowDate.addDay(2).format("yyyy/MM/dd")
+    val sunday = HomeflowDate.isSunday()
+    Log.e("DATE: ", sunday.toString())
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {

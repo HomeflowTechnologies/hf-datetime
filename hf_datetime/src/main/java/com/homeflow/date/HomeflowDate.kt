@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object HomeflowDate {
-
+  private var date: Date? = null
   /**
    * Agregar dias
    */
@@ -13,36 +13,38 @@ object HomeflowDate {
     val calendar = Calendar.getInstance()
     calendar.time
     calendar.add(Calendar.DATE, day)
+    date = calendar.time
     return this
-    //return calendar.time
   }
 
   /**
    * Agregar meses
    * @var int months
    */
-  fun addMonth(month: Int): Date {
+  fun addMonth(month: Int): HomeflowDate {
     val calendar = Calendar.getInstance()
     calendar.time
     calendar.add(Calendar.MONTH, month)
-    return calendar.time
+    date = calendar.time
+    return this
   }
 
   /**
    * Agregar Años
    * @var years
    */
-  fun addYear(year: Int): Date {
+  fun addYear(year: Int): HomeflowDate {
     val calendar = Calendar.getInstance()
     calendar.time
     calendar.add(Calendar.YEAR, year)
-    return calendar.time
+    date = calendar.time
+    return this
   }
 
   /**
    * Verificar si hoy es Lunes.
    */
-  fun isMonday(): Boolean {
+  fun isMonday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
     calendar.time
     val weekday = calendar.get(Calendar.DAY_OF_WEEK)
@@ -55,7 +57,7 @@ object HomeflowDate {
   /**
    * Verificar si hoy es Martes.
    */
-  fun isTuesday(): Boolean {
+  fun isTuesday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
     calendar.time
     val weekday = calendar.get(Calendar.DAY_OF_WEEK)
@@ -68,7 +70,7 @@ object HomeflowDate {
   /**
    * Verificar si hoy es Miercoles.
    */
-  fun isWednesday(): Boolean {
+  fun isWednesday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
     calendar.time
     val weekday = calendar.get(Calendar.DAY_OF_WEEK)
@@ -81,7 +83,7 @@ object HomeflowDate {
   /**
    * Verificar si hoy es Jueves.
    */
-  fun isThursday(): Boolean {
+  fun isThursday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
     calendar.time
     val weekday = calendar.get(Calendar.DAY_OF_WEEK)
@@ -94,7 +96,7 @@ object HomeflowDate {
   /**
    * Verificar si hoy es Viernes.
    */
-  fun isFriday(): Boolean {
+  fun isFriday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
     calendar.time
     val weekday = calendar.get(Calendar.DAY_OF_WEEK)
@@ -107,7 +109,7 @@ object HomeflowDate {
   /**
    * Verificar si hoy es Sabado.
    */
-  fun isSaturday(): Boolean {
+  fun isSaturday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
     calendar.time
     val weekday = calendar.get(Calendar.DAY_OF_WEEK)
@@ -120,7 +122,7 @@ object HomeflowDate {
   /**
    * Verificar si hoy es Domingo.
    */
-  fun isSunday(): Boolean {
+  fun isSunday(date: String? = null): Boolean {
     val calendar = Calendar.getInstance()
     calendar.time
     val weekday = calendar.get(Calendar.DAY_OF_WEEK)
@@ -177,6 +179,12 @@ object HomeflowDate {
     val firstDay = firstDayWeekMonday()
     val lastDay = lastDayWeek()
     return (firstDay.before(compare) || firstDay.compareTo(compare) == 0) && (lastDay.after(compare) || lastDay.compareTo(compare) == 0)
+  }
+
+  @SuppressLint("SimpleDateFormat")
+  fun format(format: String): String {
+    val df = SimpleDateFormat(format)
+    return df.format(date!!)
   }
 
 }
