@@ -1,4 +1,5 @@
-[![](https://jitpack.io/v/HomeflowTechnologies/hf-datetime.svg)](https://jitpack.io/#HomeflowTechnologies/hf-datetime)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=hf-datetime.readme)
+[![Download](https://jitpack.io/v/HomeflowTechnologies/hf-datetime.svg)](https://jitpack.io/#HomeflowTechnologies/hf-datetime)
 
 <p align="center"><img src="static/logo.png" height="230"></p>
 
