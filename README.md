@@ -6,7 +6,7 @@
 Homeflow DataTime
 =====
 
-Homeflow DataTime (HDT) es una liberia de fechas que usa Date y Calendar con Kotlin para la automatización de operaciones con fechas, construido para la empresa Homeflow Technologies y asociados.
+Homeflow DataTime (HDT) es una liberia de fechas para Android que usa Date y Calendar con Kotlin para la automatización de operaciones con fechas, construido para la empresa Homeflow Technologies y asociados.
 
   - Obtener periodicidades.
   - Generar Planes de Pagos.
@@ -53,12 +53,12 @@ Los casos de uso simples se verán así:
 
 Cobranzas
 ```java
-HFCobranzas.getStartEndDate(2, 7)
-HFCobranzas.getPaymenPlan(2, 7)
+HomeflowCobranzas.getStartEndDate(2, 7, "yyyy-MM-dd")
+HomeflowCobranzas.getPaymenPlan(2, 7, "yyyy-MM-dd")
 ```
 
 Fechas
 ```java
-HFDate.addDays(8)
-HFDate.addMonth(8)
+HomeflowDate.addDays(8).format("yyyy-MM-dd")
+HomeflowDate.addMonth(8).format("yyyy-MM-dd")
 ```
