@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.github.HomeflowTechnologies:hf-datetime:1.0.0-alpha02'
+  implementation 'com.github.HomeflowTechnologies:hf-datetime:1.0.0-alpha03'
 }
 ```
 
@@ -42,7 +42,7 @@ Agrega la dependencia:
 <dependency>
   <groupId>com.github.HomeflowTechnologies</groupId>
   <artifactId>hf-datetime</artifactId>
-  <version>1.0.0-alpha02</version>
+  <version>1.0.0-alpha03</version>
 </dependency>
 ```
 
