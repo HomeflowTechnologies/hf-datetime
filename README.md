@@ -1,6 +1,7 @@
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=hf-datetime.readme)
+[![Download](https://jitpack.io/v/HomeflowTechnologies/hf-datetime.svg)](https://jitpack.io/#HomeflowTechnologies/hf-datetime)
+
 <p align="center"><img src="static/logo.png" height="230"></p>
-
-
 
 
 Homeflow DataTime
@@ -22,7 +23,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.github.HomeflowTechnologies:hf-datetime:1.0.0-alpha02'
+  implementation 'com.github.HomeflowTechnologies:hf-datetime:1.0.0-alpha03'
 }
 ```
 
@@ -42,7 +43,7 @@ Agrega la dependencia:
 <dependency>
   <groupId>com.github.HomeflowTechnologies</groupId>
   <artifactId>hf-datetime</artifactId>
-  <version>1.0.0-alpha02</version>
+  <version>1.0.0-alpha03</version>
 </dependency>
 ```
 
