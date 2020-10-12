@@ -1,7 +1,6 @@
+[![](https://jitpack.io/v/HomeflowTechnologies/hf-datetime.svg)](https://jitpack.io/#HomeflowTechnologies/hf-datetime)
+
 <p align="center"><img src="static/logo.png" height="230"></p>
-
-
-
 
 Homeflow DataTime
 =====
