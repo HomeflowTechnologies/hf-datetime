@@ -1,5 +1,8 @@
-![visitors](https://visitor-badge.laobi.icu/badge?page_id=hf-datetime.readme)
 [![Download](https://jitpack.io/v/HomeflowTechnologies/hf-datetime.svg)](https://jitpack.io/#HomeflowTechnologies/hf-datetime)
+![GitHub repo size in bytes](https://img.shields.io/github/repo-size/HomeflowTechnologies/hf-datetime.svg)
+![GitHub issues](https://img.shields.io/github/issues/HomeflowTechnologies/hf-datetime.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/HomeflowTechnologies/hf-datetime.svg)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=hf-datetime.readme)
 
 <p align="center"><img src="static/logo.png" height="230"></p>
 
